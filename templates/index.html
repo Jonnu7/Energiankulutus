@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Hakaniemen kauppahallin energiankulutus vuonna 2019</title>
+        <link rel="stylesheet" href="{{
+            url_for('static', filename='css/main.css') }}">
+    </head>
+    <body>
+        <p>Hakaniemen kauppahallin energiankulutus vuonna 2019</p>
+        <br>
+        <img src="https://www.uuttahelsinkia.fi/sites/default/files/styles/cols_11/public/uutiset/2017-01/hakaniemen_kauppahalli_2014_laurirotko.jpg?itok=uLgANHkY">
+        <br>
+        <output type="text" name="name_output">
+        <p>Energiankulutus kWh:</p>
+        <br>
+        {% for key, value in to_send.items() %}
+            <p>{{to_send}}</p>
+        {% endfor %}
+        </output>
+        
+    </body>
+</html>

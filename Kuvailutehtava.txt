@@ -1,0 +1,13 @@
+Jos data haluttaisiin hakea viikottaisena niin tekisin seuraavat muutokset:
+
+Käyttäisin pandas data-analyysi työkalua, jotta saisin sen ja datetimen avulla viikottaisen datan suoraan päivämääristä DataFrameen.
+Päivämääristä pitäisi vain erottaa Y-D-M ja kellonaika, jotka jakaa merkki "T". 
+T:n jälkeisen kellonajan saa helposti rajattua sliceemällä oikeat indexit pois. Listan/sanakirjan saattaisi joutua luomaan uudestaan,
+mikäli sliceäminen tai sep='T' eivät toimisi.
+
+Viikottaisen datan laittaisin listaan tai sanakirjaan kokeilun perusteella,
+josta sen käsittely pandasilla onnistuisi.
+
+(Tarvittaessa määrittäisin viikkojen numerot päivämäärille, jos datetime ei jostain syystä saisi niitä suoraan)
+
+Näin saisin suoraan datan muodossa esim Viikko 1: 15kWh ja sen saisi mukavasti näkyviin selaimeenkin pandasin DataFramen avulla.

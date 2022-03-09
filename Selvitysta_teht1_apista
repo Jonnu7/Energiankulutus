@@ -1,0 +1,34 @@
+Tämä appi on tehty flaskilla.
+
+Sain webapin toimimaan lähes täysin. Apin oli tarkoitus näyttää tiedot avattaesssa. Sain haettua API-kyselyllä JSON-datan ja kirjoitettua sen CSV-tiedostoon datacall.py:llä.
+datacall.py:ssä funktio api_call hakee JSON-datan, parsii sen ja kirjaa datan ylös csv-tiedostoon nimeten sen aikaleimalla ja luo tiedoston, jos sitä ei ole olemassa.
+Funktio parse_monthly_data lukee tämän csv-tiedoston ja kirjaa sieltä tiedot ylös sanakirjaan.
+
+Tämä sanakirja oli tarkoitus siirtää näkymään selaimella flaskin render_templatesin avulla, jolla haluttu asia pitäisi saada linkattua backendistä front endiin.
+Jouduin kuitenkin ongelmiin render_templatesin kanssa ja jostain syystä se tuotti AttributeError: 'NoneType' object has no attribute 'values'.
+App.py:hynkin välittyvä tieto datacall.py:stä sanakirjana tai listana ei kuitenkaan tule render_templatesille vaaditussa attribuutissa.
+Ymmärrän ongelman, mutta aika ei riittänyt sen läpikotaiseen selvittämiseen.
+
+Kokeilin myös siirtää sanakirjan dataa listana, jos se korjaisi ongelman backendissä, mutta näin ei käynyt.
+
+Yksi mahdollinen ratkaisu olisi työntää manuaalisesti  kontekstia appille lauseella "with app.app_context()", mutta se ajautui uuteen ongelmaan SERVER_NAME:n kanssa.
+Yritin korjata tätä lauseella: 
+"with app.app_context(), app.test_request_context():
+    url = url_for('home')"
+
+Tämä sai errorit korjattua, mutta appi ei kuitenkaan toiminut halutulla tavalla ja test_request_context jäi päälle ikuisesti.
+
+Kaiken tämän lisäksi index.html:ään laittamani {% %} (flaskin ominaisuus, jonka sisälle voi kirjoitta pythonia) koodinpätkä:
+"{% for key, value in to_send.items() %}
+            <p>{{to_send}}</p>
+        {% endfor %}"
+näkyi selaimessa suoraan tuollaisena. Uskoisin sen takia, koska en saanut tuota backendin puolta toiminaan. 
+
+
+main.css oli kokeiluni laittaa webappiin hieman muotoilua, mutta siihen en paneutunut ratkoessani muita bugeja.
+
+
+Tässä tehtävässä kovakoodasin kuukaudet kalenteriin, koska aikani oli rajattua ja dataa verrattain vähän. Muuten olisin tehnyt siistin DataFramen pandasilla ja 
+linkannut sen näkymään selaimessa.
+
+Tässä on samalla lista ongelmakohtia ratkottavaksi ensimmäiseen tekemääni webappiin. Olen varma, että saisin tämän toimimaan pienen kokeilun jälkeen. 
